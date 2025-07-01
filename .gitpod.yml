@@ -1,0 +1,26 @@
+tasks:
+  - name: Setup Java 17 and Build Spring Boot Dashboard
+    init: |
+      # Install Java 17 via SDKMAN (automated)
+      echo "Y" | sdk install java 17.0.15-tem
+      sdk default java 17.0.15-tem
+      
+      # Verify setup
+      java -version
+      mvn -version
+      
+      # Build the project
+      mvn clean install
+    command: |
+      # Run Spring Boot application with dev profile
+      mvn spring-boot:run -Dspring-boot.run.profiles=dev
+ports:
+  - port: 8080
+    onOpen: open-preview
+vscode:
+  extensions:
+    - vscjava.vscode-spring-boot
+    - vscjava.vscode-maven
+    - redhat.java
+    - Pivotal.vscode-spring-boot
+    - eamodio.gitlens

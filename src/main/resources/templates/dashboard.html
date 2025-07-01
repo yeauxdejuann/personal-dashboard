@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        p { font-size: 1.2rem; }
+        .status { 
+            background: #2ecc71; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+  <div class="weather-widget">
+    <h2>🌤️ Current Weather</h2>
+    <div th:if="${weather}">
+        <h3 th:text="${weather.location}">Location</h3>
+        <div class="temperature">
+            <span th:text="${weather.temperature}">0</span>°C
+        </div>
+        <p th:text="${weather.description}">Description</p>
+        <p>💨 Wind: <span th:text="${weather.windSpeed}">0</span></p>
+    </div>
+</div>
+</body>
+</html>
